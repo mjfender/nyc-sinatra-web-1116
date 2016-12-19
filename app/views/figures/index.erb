@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Historical Figures</title>
+  </head>
+  <body>
+    <h1>Historical Figures</h1>
+
+      <!-- figure[name] -->
+      <h2>Figure Information</h2>
+      <% @figures.each do |figure| %>
+
+        <h3 for="name">Name: <%= figure.name %></h3>
+
+
+      <!-- figure[title_ids][] -->
+        <h3 for="title_ids">Titles:</h3>
+          <ul><
+            <li>
+              
+              <p for="titles"> <%= figure.title.name %> </p>
+            </li>
+        </ul>
+
+        <!-- figure[landmark_ids][] -->
+        <h3 for="title_ids">Landmarks:</h3>
+          <ul><% @landmarks.each do |landmark| %>
+            <li>
+              <p for="landmarks"> <%= landmark.name %> </p>
+            </li>
+          <% end %></ul>
+
+
+          <% end %>
+
+  </body>
+</html>

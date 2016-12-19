@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Historical Figures</title>
+  </head>
+  <body>
+    <h1>Historical Figures</h1>
+    <form action="/figures" method="POST">
+      <!-- figure[name] -->
+      <h2>Figure Information</h2>
+        <label for="name">Name:</label>
+          <input type="text" name="figure[name]">
+          <br />
+
+      <!-- figure[title_ids][] -->
+        <label for="title_ids">Titles:</label>
+            <br />
+          <% @titles.each do |title| %>
+            <label for="titles"> <%= title.name %> </label>
+            <input type="checkbox" value="<%=title.id%>" name="figure[title_ids][]" />
+            <br />
+            <% end %>
+
+        <!-- title[name] -->
+        <label for="new_title">Other</label>
+          <input type="text" name="title[name]">
+          <br />
+
+        <!-- figure[landmark_ids][] -->
+        <label for="landmark_ids">Landmarks:</label>
+            <br />
+          <% @landmarks.each do |landmark| %>
+            <label for="landmarks"> <%= landmark.name %> </label>
+
+              <input type="checkbox" value="<%=landmark.id%>" name="figure[landmark_ids][]" />
+
+            <br />
+            <% end %>
+
+        <!-- landmark[name] -->
+        <label for="new_landmark">Other</label>
+          <input type="text" name="landmark[name]">
+          <br />
+
+
+
+      <input type="submit" value="Submit" />
+    </form>
+
+  </body>
+</html>
