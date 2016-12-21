@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit <%= @figure.name %></title>
+  </head>
+  <body>
+    <h1>Edit <%= @figure.name %></h1>
+    <form action="/figures/<%=@figure.id%>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+      <!-- figure[name] -->
+      <h2>Figure Information</h2>
+        <label for="name">Name:</label>
+          <input type="text" name="figure[name]" id="figure_name" value=<%= @figure.name %>>
+          <br />
+
+      <!-- figure[title_ids][] -->
+        <label for="title_ids">Titles:</label>
+            <br />
+          <% if !@titles.nil? %>
+          <% @titles.each do |title| %>
+            <label for="title_<%=title.id%>"> <%= title.name %> </label>
+            <input <%= "checked" if @figure.title_ids.include?(title.id) %> type="checkbox" id="title_<%=title.id%>" value="<%=title.id%>" name="figure[title_ids][]" />
+            <br />
+            <% end %>
+          <% end %>
+
+        <!-- title[name] -->
+        <h3>Other Title</h3>
+        <label for="new_title">Name</label>
+          <input type="text" name="title[name]" id="new_title" >
+          <br />
+
+        <!-- figure[landmark_ids][] -->
+            <br />
+          <% if !@landmarks.nil? %>
+          <% @landmarks.each do |landmark| %>
+            <label for="landmarks"> <%= landmark.name %> </label>
+
+              <input <%= "checked" if @figure.landmark_ids.include?(landmark.id)%> type="checkbox" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>" name="figure[landmark_ids][]">
+
+            <br />
+            <% end %>
+          <% end %>
+
+        <!-- landmark[name] -->
+        <h3>Other Landmark</h3>
+        <label for="new_landmark">Name</label>
+          <input type="text" name="landmark[name]" id="new_landmark">
+        <label for="new_landmark">Year Completed</label>
+          <input type="text" name="landmark[year_completed]" id="new_year_completed">
+          <br /><br>
+
+
+
+      <input type="submit" id="Edit Figure" value="Edit Figure">
+    </form>
+
+  </body>
+</html>

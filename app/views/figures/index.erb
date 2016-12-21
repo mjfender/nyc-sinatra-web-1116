@@ -6,33 +6,27 @@
   </head>
   <body>
     <h1>Historical Figures</h1>
-
       <!-- figure[name] -->
       <h2>Figure Information</h2>
       <% @figures.each do |figure| %>
-
-        <h3 for="name">Name: <%= figure.name %></h3>
-
-
-      <!-- figure[title_ids][] -->
-        <h3 for="title_ids">Titles:</h3>
-          <ul><
-            <li>
-              
-              <p for="titles"> <%= figure.title.name %> </p>
-            </li>
-        </ul>
+        <h3><a href="/figures/<%=figure.id%>"<h3>Name: <%= figure.name %></a></h3>
+        <!-- figure[title_ids][] -->
+        <h3>Titles:</h3>
+          <ul>
+          <% figure.titles.each do |title| %>
+            <li> <%= title.name %></li>
+          <% end %>
+          </ul>
+     
 
         <!-- figure[landmark_ids][] -->
-        <h3 for="title_ids">Landmarks:</h3>
-          <ul><% @landmarks.each do |landmark| %>
-            <li>
-              <p for="landmarks"> <%= landmark.name %> </p>
-            </li>
-          <% end %></ul>
-
-
+        <h3>Landmarks:</h3>
+          <ul>
+          <% figure.landmarks.each do |landmark| %>
+            <li> <%= landmark.name %> </li>
           <% end %>
+          </ul>
+      <% end %>
 
   </body>
 </html>

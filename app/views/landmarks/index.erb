@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Landmarks</title>
+  </head>
+  <body>
+    <h1>Landmarks</h1>
+      <!-- figure[name] -->
+      <h2>Landmark Information</h2>
+      <% @landmarks.each do |landmark| %>
+        <h3><a href="/flandmarks/<%=landmark.id%>"<h3>Name: <%= landmark.name %></a></h3>
+        <h3>Year Completed: <%=landmark.year_completed%></h3>
+      <% end %>
+  </body>
+</html>

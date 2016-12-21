@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=@figure.name%></title>
+</head>
+<body>
+<h1> Viewing <%=@figure.name%></h1>
+<h2> Name: <%=@figure.name%></h2>
+<h2> Titles:</h2>
+  <ul>
+    <% @figure.titles.each do |figure|%>
+    <li> <%= figure.name %> </li>
+    <% end %>
+  </ul>
+<h2> Landmarks:</h2>
+ <ul>
+    <% @figure.landmarks.each do |landmark|%>
+    <li> <%= landmark.name %> </li>
+    <% end %>
+  </ul>
+
+  <a href="/figures/<%=@figure.id%>/edit"><button value="Edit">Edit</button></a>
+
+</body>
+</html>
